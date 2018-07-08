@@ -68,14 +68,20 @@ async def handle(request):
     return web.Response(text=text)
 
 # aiohttp server
-logger.debug('aiohttp server starting')
-app = web.Application()
-app.add_routes([web.get('/', handle),
-                web.get('/{name}', handle)])
-web.run_app(app, access_log=logger)
+async def start_server():
+    logger.debug('aiohttp server starting')
+    app = web.Application()
+    app.add_routes([web.get('/', handle),
+                    web.get('/{name}', handle)])
+    runner = AppRunner(app)
+    await runner.setup()
+    site = TCPSiter(runner, 'localhost', 8080)
+    await site.start()
 
 # loop exec
-logger.debug('loop exec')
-loop = asyncio.get_event_loop()
-loop.create_task(exec_orders_in_queue())
-loop.run_forever()
+if __name__ == '__main__':
+    logger.debug('loop exec')
+    loop = asyncio.get_event_loop()
+    loop.create_task(start_server())
+    loop.create_task(exec_orders_in_queue())
+    loop.run_forever()
