@@ -49,7 +49,8 @@ async def exec_orders_in_queue():
     while True:
         order = await queue.get()
         if order is not None:
-            logger.debug(order)
+            logger.debug('exec orders %s', order)
+            await asyncio.sleep(5)
         queue.task_done()
 
 async def add_orders_in_queue(order):
@@ -60,7 +61,6 @@ async def add_orders_in_queue(order):
 async def handle(request):
     name = request.match_info.get('name', "Anonymous")
     text = "Hello, " + name
-    logger.debug(name)
     try:
         await add_orders_in_queue(name)
     except Exception as e:
@@ -73,9 +73,9 @@ async def start_server():
     app = web.Application()
     app.add_routes([web.get('/', handle),
                     web.get('/{name}', handle)])
-    runner = AppRunner(app)
+    runner = web.AppRunner(app)
     await runner.setup()
-    site = TCPSiter(runner, 'localhost', 8080)
+    site = web.TCPSite(runner, 'localhost', 8080)
     await site.start()
 
 # loop exec
