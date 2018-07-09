@@ -9,7 +9,8 @@ logging.config.dictConfig({
     'formatters': {
         'detailed': {
             'class': 'logging.Formatter',
-            'format': '%(asctime)s %(name)-15s %(levelname)-8s %(processName)-10s %(message)s'
+            'format': '%(asctime)s %(name)-15s '
+                      '%(levelname)-8s %(processName)-10s %(message)s'
         }
     },
     'handlers': {
@@ -53,10 +54,12 @@ async def exec_orders_in_queue():
             await asyncio.sleep(5)
         queue.task_done()
 
+
 async def add_orders_in_queue(order):
     """ add order in async Queue (fifo) """
     logger.debug('add_orders_in_queue %s', order)
     await queue.put(order)
+
 
 async def handle(request):
     name = request.match_info.get('name', "Anonymous")
@@ -66,6 +69,7 @@ async def handle(request):
     except Exception as e:
         logger.exception(e, exc_info=True)
     return web.Response(text=text)
+
 
 # aiohttp server
 async def start_server():
