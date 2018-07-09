@@ -1,2 +1,2 @@
 #!/bin/env bash
-pipenv run python server.py
+pipenv run python start.py
