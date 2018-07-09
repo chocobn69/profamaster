@@ -26,5 +26,3 @@ if __name__ == '__main__':
         loop.run_forever()
     except KeyboardInterrupt:
         logger.debug('Ctrl+C pressed, stopping')
-    finally:
-        loop.close()
