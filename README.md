@@ -1,5 +1,11 @@
 # profamaster
 
-## Hot to start server
+
+## How to start server
 
 `python proframaser/server.py`
+
+
+## Create dev environment
+
+`pipenv install`
