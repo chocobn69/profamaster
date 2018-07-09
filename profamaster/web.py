@@ -28,3 +28,4 @@ async def start_server():
     await runner.setup()
     site = web.TCPSite(runner, 'localhost', 8080)
     await site.start()
+    return app

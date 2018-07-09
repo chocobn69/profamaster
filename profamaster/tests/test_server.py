@@ -1,18 +1,14 @@
 from aiohttp.test_utils import AioHTTPTestCase, unittest_run_loop
 from aiohttp import web
 
+from ..web import start_server
 
-class MyAppTestCase(AioHTTPTestCase):
+
+class ProfamasterTestCase(AioHTTPTestCase):
 
     async def get_application(self):
-        """
-        Override the get_app method to return your application.
-        """
-        async def hello(request):
-            return web.Response(text='Hello, world')
 
-        app = web.Application()
-        app.router.add_get('/', hello)
+        app = await start_server()
         return app
 
     # the unittest_run_loop decorator can be used in tandem with
@@ -23,7 +19,7 @@ class MyAppTestCase(AioHTTPTestCase):
         resp = await self.client.request("GET", "/")
         assert resp.status == 200
         text = await resp.text()
-        assert "Hello, world" in text
+        assert "Hello, Anonymous" in text
 
     # a vanilla example
     def test_example_vanilla(self):
@@ -32,6 +28,6 @@ class MyAppTestCase(AioHTTPTestCase):
             resp = await self.client.request("GET", url)
             assert resp.status == 200
             text = await resp.text()
-            assert "Hello, world" in text
+            assert "Hello, Anonymous" in text
 
         self.loop.run_until_complete(test_get_route())
