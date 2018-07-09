@@ -17,6 +17,7 @@ def pane_movement(p_number, way, percent_move=1.0):
 
 async def exec_orders_in_queue():
     """ read fifo queue and execute orders sequentialy """
+    logger.info('start exec_orders_in_queue loop')
     while True:
         order = await queue.get()
         if order is not None:

@@ -20,7 +20,7 @@ async def handle(request):
 
 # aiohttp server
 async def start_server():
-    logger.debug('aiohttp server starting')
+    logger.info('aiohttp server starting')
     app = web.Application()
     app.add_routes([web.get('/', handle),
                     web.get('/{name}', handle)])
