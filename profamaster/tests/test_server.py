@@ -44,7 +44,7 @@ class ProfamasterTestCase(AioHTTPTestCase):
         await self._test_call('POST', '/action/1/down', 200, {'status': 'ok'})
 
         # try with not POST method
-        await self._test_call('GET', '/action/1/up', 404, None)
+        await self._test_call('GET', '/action/1/up', 405, None)
 
         # now try with unknown pane
         # test action up on pane 9
