@@ -24,11 +24,10 @@ ERRORS = {
 PANE_LIST = [1, ]
 
 
-async def handle_error(request, error_code, status):
-    error_return = ERRORS[error_code]
+async def handle_error(request, error, status):
     return web.Response(
         status=status,
-        text=json.dumps(error_return)
+        text=json.dumps(error)
     )
 
 
@@ -42,12 +41,12 @@ async def handle_action(request):
 
     if action not in ['up', 'stop', 'down']:
         return await handle_error(request,
-                                  error_code=ERRORS['unknown action'],
+                                  error=ERRORS['unknown action'],
                                   status=503)
 
     if pane not in PANE_LIST:
         return await handle_error(request,
-                                  error_code=ERRORS['unknown pane'],
+                                  error=ERRORS['unknown pane'],
                                   status=503)
 
     # handle action
