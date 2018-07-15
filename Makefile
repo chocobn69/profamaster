@@ -1,3 +1,6 @@
+init:
+	pipenv install --dev
+
 run:
 	pipenv run python start.py
 

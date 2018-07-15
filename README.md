@@ -6,7 +6,7 @@
 
 ## Create dev environment
 
-`pipenv install`
+`make init`
 
 ## Run tests
 
