@@ -23,11 +23,25 @@ logging.config.dictConfig({
         },
     },
     'loggers': {
+        'aiohttp.access': {
+            'handlers': ['console']
+        },
+        'aiohttp.server': {
+            'handlers': ['console']
+        },
         'root': {
             'handlers': ['console']
         }
     },
     'root': {
+        'level': 'DEBUG',
+        'handlers': ['console', ]
+    },
+    'aiohttp.access': {
+        'level': 'DEBUG',
+        'handlers': ['console', ]
+    },
+    'aiohttp.server': {
         'level': 'DEBUG',
         'handlers': ['console', ]
     },
