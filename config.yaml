@@ -1,0 +1,13 @@
+pane_module: profalux
+
+panes:
+    1:
+        name: a room
+        exec_time: 700
+    2:
+        name: another room
+        exec_time: 800
+
+web:
+    port: 8080
+    host: localhost

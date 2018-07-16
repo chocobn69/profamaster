@@ -3,8 +3,26 @@ profamaster config module
 '''
 
 import asyncio
+import os
 import logging.config
+from yaml import load
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
 
+
+ROOT_PATH = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__), '../'))
+
+
+def load_config(config_path):
+    ''' load config file filname '''
+    with open(config_path, 'r') as stream:
+        return load(stream, Loader=Loader)
+
+
+CONFIG = load_config(os.path.realpath(os.path.join(ROOT_PATH, 'config.yaml')))
 
 logging.config.dictConfig({
     'version': 1,
