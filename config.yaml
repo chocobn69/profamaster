@@ -4,9 +4,17 @@ panes:
     1:
         name: a room
         exec_time: 700
+        gpio:
+            up: 1
+            down: 2
+            stop: 3
     2:
         name: another room
         exec_time: 800
+        gpio:
+            up: 4
+            down: 5
+            stop: 6
 
 web:
     port: 8080

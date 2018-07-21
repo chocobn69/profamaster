@@ -49,9 +49,13 @@ async def handle_action(request):
                                   error=ERRORS['unknown pane'],
                                   status=503)
 
-    # handle action
+    # handle order
     try:
-        await add_orders_in_queue(action)
+        order = {
+            'action': action,
+            'pane': pane,
+        }
+        await add_orders_in_queue(order)
     except Exception as e:
         logger.exception(e, exc_info=True)
     return web.Response(text=json.dumps({'status': 'ok'}))

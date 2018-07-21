@@ -1,18 +1,38 @@
 import asyncio
 import logging
 
+from shiftpi import (
+    HIGH,
+    LOW,
+    ALL,
+    digitalWrite,
+    startupMode,
+    delay,
+    shiftRegisters
+)
+
 from profamaster.config import (
     queue,
-    TIME_BETEWEEN_EXEC,
+    CONFIG,
+    TIME_BTEWEEN_EXEC,
 )
 
 logger = logging.getLogger(__name__)
 
+shiftRegisters(1)
+startupMode(LOW)
 
-def pane_movement(p_number, way, percent_move=1.0):
-    """ move up/down pane number p_number to x percent """
-    if way not in ['up', 'down']:
-        raise AttributeError('way has to be either up or down')
+
+def pane_action(pane, action):
+    """ exec pane action """
+    if action not in ['up', 'stop', 'down']:
+        raise AttributeError('action has to be either up down or stop')
+
+    # exec action...
+    pass
+    digitalWrite(CONFIG[pane]['gpio'][action], HIGH)
+    delay(CONFIG[pane]['exec_time'])
+    digitalWrite(CONFIG[pane]['gpio'][action], LOW)
 
 
 async def exec_orders_in_queue():
@@ -22,7 +42,10 @@ async def exec_orders_in_queue():
         order = await queue.get()
         if order is not None:
             logger.debug('exec orders %s', order)
-            await asyncio.sleep(TIME_BETEWEEN_EXEC)
+            pane = order['pane']
+            action = order['action']
+            pane_action(pane, action)
+            await asyncio.sleep(TIME_BETWEEN_EXEC)
         queue.task_done()
 
 

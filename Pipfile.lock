@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c8ef44c46e6b181926fef27c02ee1a4fc1c5236cea1476256214a4e2da4a81d0"
+            "sha256": "3bc3fd377bb3bbb3ffb680d73d5cc497ca07233eb5315aebbd4200c81c1b9c83"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -158,7 +158,6 @@
                 "sha256:0453c8676c2bee6feb0434748b068d5510273a916295fd61d306c4f22fbfd752",
                 "sha256:4b208614ae6d98195430ad6bde03641c78553acee7c83cec2e85d613c0cd383d"
             ],
-            "markers": "python_version != '3.2.*' and python_version != '3.0.*' and python_version != '3.3.*' and python_version >= '2.7' and python_version != '3.1.*'",
             "version": "==3.6.3"
         },
         "pytest-aiohttp": {
@@ -192,13 +191,6 @@
             ],
             "index": "pypi",
             "version": "==0.6.3"
-        },
-        "shiftpy": {
-            "hashes": [
-                "sha256:c0535518c9f3e04bc6c514a3af325daf4a4fe8c1bd84c44e927151878ddc4041"
-            ],
-            "index": "pypi",
-            "version": "==0.1.3"
         },
         "six": {
             "hashes": [
@@ -294,7 +286,6 @@
                 "sha256:0453c8676c2bee6feb0434748b068d5510273a916295fd61d306c4f22fbfd752",
                 "sha256:4b208614ae6d98195430ad6bde03641c78553acee7c83cec2e85d613c0cd383d"
             ],
-            "markers": "python_version != '3.2.*' and python_version != '3.0.*' and python_version != '3.3.*' and python_version >= '2.7' and python_version != '3.1.*'",
             "version": "==3.6.3"
         },
         "six": {

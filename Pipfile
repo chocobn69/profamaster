@@ -11,9 +11,8 @@ pytest = "*"
 python_version = "3.6"
 
 [packages]
-"rpi.gpio" = "*"
-shiftpy = "*"
 aiohttp = "*"
 aiodns = "*"
 pytest-aiohttp = "*"
 pyyaml = "*"
+"rpi.gpio" = "*"
