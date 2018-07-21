@@ -1,10 +1,25 @@
 from aiohttp.test_utils import AioHTTPTestCase, unittest_run_loop
+from unittest.mock import patch, MagicMock
 import json
 
-from ..web import start_server
+
+# we need to this before importing start_server
+MockRPi = MagicMock()
+modules = {
+    "RPi": MockRPi,
+    "RPi.GPIO": MockRPi.GPIO,
+}
+patcher = patch.dict("sys.modules", modules)
+patcher.start()
+
+
+from ..web import start_server  # noqa
 
 
 class ProfamasterTestCase(AioHTTPTestCase):
+
+    def teardown(self):
+        patcher.stop()
 
     async def get_application(self):
         """ get app from web.start_server """
