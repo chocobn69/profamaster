@@ -1,10 +1,9 @@
 import asyncio
 import logging
 
-from shiftpi import (
+from profamaster.shiftpi.shiftpi import (
     HIGH,
     LOW,
-    ALL,
     digitalWrite,
     startupMode,
     delay,
@@ -14,7 +13,7 @@ from shiftpi import (
 from profamaster.config import (
     queue,
     CONFIG,
-    TIME_BTEWEEN_EXEC,
+    TIME_BETWEEN_EXEC,
 )
 
 logger = logging.getLogger(__name__)
