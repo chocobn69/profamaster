@@ -8,6 +8,10 @@
 
 `make init`
 
+## Install virtualenv
+
+`make install`
+
 ## Run tests
 
 `make test`
@@ -26,7 +30,8 @@ Description=Profamaster web server
 
 [Service]
 Type=simple
-ExecStart=PATH_TO_PROFAMASTER/start.py
+ExecStart=pipenv run python start.py
+WorkDir=PATH_TO_PROFAMASTER
 
 [Install]
 WantedBy=multi-user.target
