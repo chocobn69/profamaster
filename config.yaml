@@ -1,5 +1,4 @@
-pane_module: profalux
-
+registers_nb: 1
 panes:
     1:
         name: a room
@@ -15,7 +14,6 @@ panes:
             up: 4
             down: 5
             stop: 6
-
 web:
     port: 8080
     host: localhost

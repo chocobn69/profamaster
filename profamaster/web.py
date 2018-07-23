@@ -5,6 +5,7 @@ import json
 from profamaster.orders import (
     add_orders_in_queue,
 )
+from profamaster.config import CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -20,8 +21,6 @@ ERRORS = {
         'message': 'unknown action',
     },
 }
-
-PANE_LIST = [1, ]
 
 
 async def handle_error(request, error, status):
@@ -44,7 +43,7 @@ async def handle_action(request):
                                   error=ERRORS['unknown action'],
                                   status=503)
 
-    if pane not in PANE_LIST:
+    if pane not in CONFIG['panes'].keys():
         return await handle_error(request,
                                   error=ERRORS['unknown pane'],
                                   status=503)

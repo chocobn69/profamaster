@@ -5,6 +5,12 @@ import signal
 
 from profamaster.web import start_server
 from profamaster.orders import exec_orders_in_queue
+from profamaster.config import CONFIG
+from profamaster.shiftpi.shiftpi import (
+    LOW,
+    startupMode,
+    shiftRegisters
+)
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +27,8 @@ if __name__ == '__main__':
                                 functools.partial(ask_exit, signame))
     try:
         logger.debug('start server')
+        shiftRegisters(CONFIG['registers_nb'])
+        startupMode(LOW)
         loop.create_task(start_server())
         loop.create_task(exec_orders_in_queue())
         loop.run_forever()

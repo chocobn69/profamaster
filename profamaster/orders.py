@@ -1,13 +1,11 @@
-import asyncio
 import logging
+import time
 
 from profamaster.shiftpi.shiftpi import (
     HIGH,
     LOW,
     digitalWrite,
-    startupMode,
     delay,
-    shiftRegisters
 )
 
 from profamaster.config import (
@@ -17,9 +15,6 @@ from profamaster.config import (
 )
 
 logger = logging.getLogger(__name__)
-
-shiftRegisters(1)
-startupMode(LOW)
 
 
 def pane_action(pane, action):
@@ -43,7 +38,7 @@ async def exec_orders_in_queue():
             pane = order['pane']
             action = order['action']
             pane_action(pane, action)
-            await asyncio.sleep(TIME_BETWEEN_EXEC)
+            time.sleep(TIME_BETWEEN_EXEC)
         queue.task_done()
 
 

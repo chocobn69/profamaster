@@ -15,7 +15,7 @@ class ConfigTest(unittest.TestCase):
                 os.path.join(ROOT_PATH,
                              'profamaster/tests/config.yaml')))
 
-        self.assertEquals('profalux', CONFIG['pane_module'])
+        self.assertEquals(1, CONFIG['registers_nb'])
         self.assertDictEqual(
             CONFIG['panes'],
             {
