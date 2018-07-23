@@ -28,7 +28,6 @@ def pane_action(pane, action):
         raise AttributeError('action has to be either up down or stop')
 
     # exec action...
-    pass
     digitalWrite(CONFIG[pane]['gpio'][action], HIGH)
     delay(CONFIG[pane]['exec_time'])
     digitalWrite(CONFIG[pane]['gpio'][action], LOW)
