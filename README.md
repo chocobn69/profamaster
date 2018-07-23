@@ -31,7 +31,7 @@ Description=Profamaster web server
 [Service]
 Type=simple
 ExecStart=pipenv run python start.py
-WorkDir=PATH_TO_PROFAMASTER
+WorkingDirectory=PATH_TO_PROFAMASTER
 
 [Install]
 WantedBy=multi-user.target
