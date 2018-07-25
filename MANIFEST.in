@@ -1,0 +1,9 @@
+include README
+include config.yaml
+include LICENSE.md
+include Makefile
+include profamaster/*.py
+include profamaster/shiftpi/*.py
+include scripts/*
+
+prune build/
