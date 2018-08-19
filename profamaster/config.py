@@ -12,17 +12,18 @@ except ImportError:
     from yaml import Loader
 
 
-ROOT_PATH = os.path.realpath(
-    os.path.join(os.getcwd(), os.path.dirname(__file__), '../'))
-
 
 def load_config(config_path):
     ''' load config file filname '''
     with open(config_path, 'r') as stream:
         return load(stream, Loader=Loader)
 
+CONFIG_FILE = './config.yaml'
 
-CONFIG = load_config(os.path.realpath(os.path.join(ROOT_PATH, 'config.yaml')))
+def lazy_load_config():
+    return load_config(os.path.realpath(CONFIG_FILE))
+
+CONFIG = lazy_load_config
 
 logging.config.dictConfig({
     'version': 1,
@@ -50,6 +51,14 @@ logging.config.dictConfig({
         'root': {
             'handlers': ['console']
         }
+    },
+    'profamaster.orders': {
+        'level': 'DEBUG',
+        'handlers': ['console', ]
+    },
+    'shiftpi': {
+        'level': 'DEBUG',
+        'handlers': ['console', ]
     },
     'root': {
         'level': 'DEBUG',

@@ -43,7 +43,7 @@ async def handle_action(request):
                                   error=ERRORS['unknown action'],
                                   status=503)
 
-    if pane not in CONFIG['panes'].keys():
+    if pane not in CONFIG()['panes'].keys():
         return await handle_error(request,
                                   error=ERRORS['unknown pane'],
                                   status=503)

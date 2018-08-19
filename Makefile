@@ -7,7 +7,7 @@ install:
 	pipenv run python setup.py install
 
 run:
-	pipenv run profamaster-server
+	pipenv run profamaster-server --config $(CONFIG)
 
 test:
 	pipenv run pytest

@@ -4,10 +4,14 @@ import asyncio
 import logging
 import functools
 import signal
+import argparse
 
 from profamaster.web import start_server
 from profamaster.orders import exec_orders_in_queue
-from profamaster.config import CONFIG
+from profamaster.config import (
+    CONFIG,
+    CONFIG_FILE,
+)
 from profamaster.shiftpi.shiftpi import (
     LOW,
     startupMode,
@@ -23,6 +27,12 @@ def ask_exit(signame):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--config', '-c', type=argparse.FileType('r'))
+    args = parser.parse_args()
+    config_file = args.config
+    CONFIG_FILE = config_file
+    CONFIG = CONFIG()
     loop = asyncio.get_event_loop()
     for signame in ('SIGINT', 'SIGTERM'):
         loop.add_signal_handler(getattr(signal, signame),

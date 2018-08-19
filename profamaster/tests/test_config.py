@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from profamaster.config import load_config, ROOT_PATH
+from profamaster.config import load_config 
 
 
 class ConfigTest(unittest.TestCase):
@@ -12,7 +12,7 @@ class ConfigTest(unittest.TestCase):
         # import config module and check config datas
         CONFIG = load_config(
             os.path.realpath(
-                os.path.join(ROOT_PATH,
+                os.path.join('./',
                              'profamaster/tests/config.yaml')))
 
         self.assertEquals(1, CONFIG['registers_nb'])

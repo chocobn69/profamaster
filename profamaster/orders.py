@@ -24,9 +24,9 @@ def pane_action(pane, action):
     logger.debug('start pane %s action %s', pane, action)
 
     # exec action...
-    digitalWrite(CONFIG['panes'][int(pane)]['gpio'][action], HIGH)
-    delay(CONFIG['panes'][int(pane)]['exec_time'])
-    digitalWrite(CONFIG['panes'][int(pane)]['gpio'][action], LOW)
+    digitalWrite(CONFIG()['panes'][int(pane)]['gpio'][action], HIGH)
+    delay(CONFIG()['panes'][int(pane)]['exec_time'])
+    digitalWrite(CONFIG()['panes'][int(pane)]['gpio'][action], LOW)
 
     logger.debug('end pane %s action %s', pane, action)
 
