@@ -2,7 +2,7 @@
 
 ## How to start server
 
-`make run`
+`make run CONFIG='config_file_path`
 
 ## Create dev environment
 
