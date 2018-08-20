@@ -31,7 +31,7 @@ if __name__ == '__main__':
     parser.add_argument('--config', '-c', type=argparse.FileType('r'))
     args = parser.parse_args()
     config_file = args.config
-    CONFIG_FILE = config_file
+    CONFIG_FILE = config_file  # noqa
     CONFIG = CONFIG()
     loop = asyncio.get_event_loop()
     for signame in ('SIGINT', 'SIGTERM'):

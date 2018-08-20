@@ -12,16 +12,18 @@ except ImportError:
     from yaml import Loader
 
 
-
 def load_config(config_path):
     ''' load config file filname '''
     with open(config_path, 'r') as stream:
         return load(stream, Loader=Loader)
 
+
 CONFIG_FILE = './config.yaml'
+
 
 def lazy_load_config():
     return load_config(os.path.realpath(CONFIG_FILE))
+
 
 CONFIG = lazy_load_config
 
