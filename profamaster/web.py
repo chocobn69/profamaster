@@ -68,6 +68,8 @@ async def start_server():
                     web.post('/action/{pane}/{action}', handle_action)])
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, 'localhost', 8080)
+    site = web.TCPSite(runner,
+                       CONFIG()['web']['host'],
+                       CONFIG()['web']['port'])
     await site.start()
     return app
