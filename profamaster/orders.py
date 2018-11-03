@@ -1,5 +1,6 @@
 import logging
 import time
+import asyncio
 
 from profamaster.shiftpi.shiftpi import (
     HIGH,
@@ -40,7 +41,7 @@ async def exec_orders_in_queue():
             pane = order['pane']
             action = order['action']
             pane_action(pane, action)
-            time.sleep(TIME_BETWEEN_EXEC)
+            asyncio.sleep(TIME_BETWEEN_EXEC)
         queue.task_done()
 
 
