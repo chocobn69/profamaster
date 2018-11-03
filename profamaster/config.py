@@ -78,4 +78,4 @@ logging.config.dictConfig({
 
 queue = asyncio.Queue()
 
-TIME_BETWEEN_EXEC = 0.7
+TIME_BETWEEN_EXEC = 0.2
